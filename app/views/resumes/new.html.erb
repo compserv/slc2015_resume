@@ -1,0 +1,29 @@
+<h1>Upload your resume</h1>
+
+<%= form_for @resume do |f| %>
+
+  <% if @resume.errors.any? %>
+    <div class="error">
+      <ul>
+        <% @resume.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %> (same as your registration)<br />
+    <%= f.text_field :name %><br />
+  </p>
+
+  <p>
+    <span class="label">Resume (pdf, doc, docx, or plain text)<br />
+    <%= f.file_field :resume, accept: 'text/plain,application/pdf,application/x-pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document' %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
