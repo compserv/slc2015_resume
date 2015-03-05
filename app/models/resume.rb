@@ -29,7 +29,7 @@ class Resume < ActiveRecord::Base
   def file_type
     return unless errors.blank?
     filetype = check_content(self.resume.content_type)
-    errors.add(:resume, "must be a PDF, Microsoft Word document, or a plain text file.")
+    errors.add(:resume, "must be a PDF, Microsoft Word document, or a plain text file.") if filetype.nil?
   end
 
   def file_size
