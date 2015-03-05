@@ -10,6 +10,41 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  background-color: #53626F;
+  color: #FFF;
+}
+
+.header {
+  margin-top: 50px;
+}
+
+.logo {
+  font-weight: 300;
+  font-size: 1.5em;
+  color: #aebccd;
+}
+
+.logo img {
+  padding-right: 10px;
+}
+
+.pagetitle {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 1.8em;
+}
+
+#resume-help {
+  color: #BBB;
+}
+
+.slc-button {
+  color: #FFF;
+}

@@ -1,29 +1,42 @@
-<h1>Upload your resume</h1>
+<div class="col-xs-4 col-xs-offset-4">
 
-<%= form_for @resume do |f| %>
+  <h2 class="pagetitle">Submit Your Resume</h2>
 
-  <% if @resume.errors.any? %>
-    <div class="error">
-      <ul>
-        <% @resume.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+  <%= form_for @resume, html: { class: "form-horizontal" } do |f| %>
+
+    <% if @resume.errors.any? %>
+      <div class="error">
+        <ul>
+          <% @resume.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, class: "col-xs-3 control-label" %>
+      <div class="col-xs-9">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
     </div>
+
+    <div class="form-group">
+      <%= f.label :resume, "Resume File", class: "col-xs-3 control-label" %>
+      <div class="col-xs-9">
+        <%= f.file_field :resume, accept: 'text/plain,application/pdf,application/x-pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document', class: "form-control" %>
+        <span id="resume-help" class="help-block">Accepted file types: PDF,
+        Microsoft Word, plain text</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-offset-3 col-xs-9">
+        <%= f.submit "Upload Resume", class: "btn btn-info btn-lg" %>
+        <a href="http://slc2015.hkn.mu" class="slc-button btn btn-link btn-sm">Back to SLC Website</a>
+      </div>
+    </div>
+
   <% end %>
 
-  <p>
-    <%= f.label :name %> (same as your registration)<br />
-    <%= f.text_field :name %><br />
-  </p>
-
-  <p>
-    <span class="label">Resume (pdf, doc, docx, or plain text)<br />
-    <%= f.file_field :resume, accept: 'text/plain,application/pdf,application/x-pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document' %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-
-<% end %>
+</div>
